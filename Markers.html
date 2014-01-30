@@ -1,0 +1,90 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+function initialize() {
+	// buildings
+  var rezcommons = new google.maps.LatLng(45.387144,-75.697715);
+  var prescott = new google.maps.LatLng(45.385603,-75.697002);
+  
+  //nodes
+  var node1 = new google.maps.LatLng(45.386865,-75.697855);
+  var node2 = new google.maps.LatLng(45.386538,-75.697855);
+  var node3 = new google.maps.LatLng(45.386195,-75.697828);
+  var node4 = new google.maps.LatLng(45.385957,-75.697726);
+  var node5 = new google.maps.LatLng(45.385569,-75.697662);
+  
+  
+  var mapOptions = {
+    zoom: 18,
+    center: rezcommons
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+	// buildings
+  var marker = new google.maps.Marker({
+      position: rezcommons,
+      map: map,
+      title: 'rezcommons'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: prescott,
+      map: map,
+      title: 'prescott'
+  });
+  
+  // nodes
+  var marker = new google.maps.Marker({
+      position: node1,
+      map: map,
+      title: 'node1'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: node2,
+      map: map,
+      title: 'node2'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: node3,
+      map: map,
+      title: 'node3'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: node4,
+      map: map,
+      title: 'node4'
+  });
+  
+  var marker = new google.maps.Marker({
+      position: node5,
+      map: map,
+      title: 'node5'
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
+
