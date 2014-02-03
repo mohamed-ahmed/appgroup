@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
+    </script>
+   
+   <script type="text/javascript">
+   
+
+  function initialize() {
+  
+  //Hash table containing data. Name, Lat, Long, Info
+  var hashTable1 = {};
+		hashTable1["Security Office"] = {Name: "Campus Security Office",Lat: 45.381903 , Long:-75.698536,Info: 'Within Robertson Hall. <b>1rst Floor</b>'};
+		hashTable1["Otrain"] = {Name: "O-Train",Lat: 45.385294 , Long:-75.69591,Info: ''};
+		hashTable1["MainBusStop"] = {Name: "Main Bus Stop",Lat: 45.385256 , Long:-75.696516,Info: '<p><font size="+1">Buses:</font> <b>7</b> St. Laurent</p>'+'<p><b>4</b> Hurdman </p>'+'<p><b>4</b> Rideau Center </p>'+'<p><b>111</b> Baseline </p>'};
+		hashTable1["SteacieBusStop"] = {Name: "Steacie Bus Stop",Lat: 45.38434 , Long:-75.696425,Info: '<p><font size="+1">Buses:</font> <b>7</b> St. Laurent</p>'+'<p><b>4</b> Hurdman </p>'+'<p><b>4</b> Rideau Center </p>'+'<p><b>111</b> Baseline </p>'};
+		hashTable1["GymBusStop"] = {Name: "Athletics Building Bus Stop",Lat: 45.38549 , Long:-75.694923,Info: '<p><font size="+1">Buses:</font> <b>7</b> St. Laurent</p>'+'<p><b>4</b> Hurdman </p>'+'<p><b>4</b> Rideau Center </p>'+'<p><b>111</b> Baseline </p>'};
+        hashTable1["AH"] = {Name: "Alumni Hall", Lat: 45.386454, Long: -75.693268,Info: '<p><img src="THicon.bmp" alt="Smiley face"><font size="+1">Tim Hortons:</font> <b>1rst Floor</b></p>'};
+		hashTable1["AA"] = {Name: "Architecture Building", Lat: 45.383973, Long: -75.697436,Info: ''};
+		hashTable1["AC"] = {Name: "Athletics Building", Lat: 45.3862510, Long: -75.694164,Info: '<p><img src="THicon.bmp" alt="TH"><font size="+1">Tim Hortons:</font> <b>1rst Floor</b></p>'};
+		hashTable1["AP"] = {Name: "Azrieli Pavillion", Lat: 45.382865, Long: -75.698992,Info: ''};
+		hashTable1["AT"] = {Name: "Azrieli Theater", Lat: 45.383321, Long: -75.698761,Info: ''};
+		hashTable1["IH"] = {Name: "Carleton Ice House", Lat: 45.385959, Long: -75.692581,Info: ''};
+		hashTable1["TT"] = {Name: "Carleton Technology & Training Center (CTTC)", Lat: 45.384502, Long: -75.693614,Info: ''};
+		hashTable1["CB"] = {Name: "Canal Building", Lat: 45.384176, Long: -75.698519,Info: '<p><font size="+1">Second Cup:</font> <b>1rst Floor</b></p>'};
+		hashTable1["CC"] = {Name: "Colonel By Child Care Center", Lat: 45.385529, Long: -75.694169,Info: ''};
+		hashTable1["DT"] = {Name: "Dunton Tower", Lat: 45.382594, Long: -75.699335,Info: ''};
+		hashTable1["FH"] = {Name: "Field House", Lat: 45.386936, Long: -75.694507,Info: ''};
+		hashTable1["FR"] = {Name: "Frontenac House", Lat: 45.38606, Long: -75.698364,Info: ''};
+		hashTable1["GH"] = {Name: "Glengary House", Lat: 45.386706, Long: -75.697278,Info: ''};
+		hashTable1["GR"] = {Name: "Grenville House", Lat: 45.386471, Long: -75.69846,Info: ''};
+		hashTable1["GY"] = {Name: "Gymnasium", Lat: 45.385676, Long: -75.693316,Info: ''};
+		hashTable1["HP"] = {Name: "Herzberg Building", Lat: 45.382048, Long: -75.697581,Info: ''};
+		hashTable1["HC"] = {Name: "Human Computer Interaction Building", Lat: 45.380672, Long: -75.699496,Info: ''};
+		hashTable1["LH"] = {Name: "Lanark House", Lat: 45.385759, Long: -75.698208,Info: ''};
+		hashTable1["LE"] = {Name: "Leeds House", Lat: 45.388001, Long: -75.698686,Info: ''};
+		hashTable1["LS"] = {Name: "Life Sciences Research Building", Lat: 45.381294, Long: -75.698037,Info: ''};
+		hashTable1["LA"] = {Name: "Loeb Building", Lat: 45.3809, Long: -75.699021,Info: '<p><font size="+1">Leob Cafe:</font> Pizza Pizza, Quiznos. <b>1rst Floor</b></p>'};
+		hashTable1["LX"] = {Name: "Lennox and Addington House", Lat: 45.386433, Long: -75.697237,Info: ''};
+		hashTable1["ME"] = {Name: "Mackenzie Building", Lat: 45.384646, Long: -75.698227,Info: '<font size="+1">Leos:</font> <b>2nd Floor</b>'};
+		hashTable1["ML"] = {Name: "MacOdrum Library", Lat: 45.381923, Long: -75.6997,Info: '<p><font size="+1">Starbucks:</font> <b>1rst Floor</b></p>'};
+		hashTable1["MB"] = {Name: "Maintenance Building", Lat: 45.384435, Long: -75.694708,Info: ''};
+		hashTable1["MC"] = {Name: "Minto Center for Advanced Studies in Engineering (CASE)", Lat: 45.385162, Long: -75.69695,Info: ''};
+		hashTable1["NB"] = {Name: "Nesbitt Biology Building", Lat: 45.383911, Long: -75.693496,Info: ''};
+		hashTable1["NW"] = {Name: "National Wildlife Research Building",Lat: 45.384096 , Long:-75.692716,Info: ''};
+		hashTable1["PA"] = {Name: "Patterson Hall",Lat: 45.381903 , Long:-75.698536,Info: ''};
+		hashTable1["PG"] = {Name: "Parking Garage",Lat: 45.383652 , Long:-75.695189,Info: ''};
+		hashTable1["PH"] = {Name: "Prescott House",Lat: 45.385716 , Long:-75.697013,Info: ''};
+		hashTable1["RB"] = {Name: "River Building",Lat: 45.382386, Long:-75.696315,Info: '<p><img src="THicon.bmp" alt="TH"><font size="+1">Tim Hortons:</font> <b>1rst Floor</b></p>'};
+		hashTable1["RH"] = {Name: "Renfrew House",Lat: 45.386116 , Long:-75.697249,Info: ''};
+		hashTable1["CO"] = {Name: "Residence Commons",Lat:45.387171 , Long:-75.697141,Info: '<p><img src="THicon.bmp" alt="TH"><font size="+1">Tim Hortons:</font> <b>1rst Floor</b></p>'+'<p><font size="+1">The Oasis:</font> Open until 2am. <b>1rst Floor</b> </p>'+'<p><font size="+1">Fresh Food Company:</font> All-you-care-to-eat residence dining center. <b>3rd Floor</b></p>'};
+		hashTable1["RO"] = {Name: "Robertson Hall",Lat: 45.383305 , Long: -75.694363,Info: '<p><font size="+1">Bent Coin:</font> Sandwiches, soups, coffee and express items. <b>5th Floor</b></p>'};
+		hashTable1["RU"] = {Name: "Russell House",Lat: 45.386929 , Long:-75.698536,Info: ''};
+		hashTable1["SP"] = {Name: "St Patricks Building",Lat: 45.387506 , Long:-75.69844,Info: ''};
+		hashTable1["SR"] = {Name: "Social Science Research Building",Lat: 45.380389 , Long: -75.699952,Info: ''};
+		hashTable1["SA"] = {Name: "Southham Hall",Lat: 45.381154 , Long:-75.699566,Info: ''};
+		hashTable1["SC"] = {Name: "Steacie Building",Lat: 45.382774 , Long: -75.696852,Info: ''};
+		hashTable1["SD"] = {Name: "Stormont and Dundas House",Lat: 45.387969 , Long:-75.697104,Info: ''};
+		hashTable1["TC"] = {Name: "Tennis Center",Lat: 45.388045 , Long:-75.69498,Info: ''};
+		hashTable1["TB"] = {Name: "Tory Building",Lat: 45.382653  , Long:-75.698069,Info: ''};
+		hashTable1["UC"] = {Name: "University Center",Lat: 45.383354 , Long:-75.697726,Info: '<p><img src="THicon.bmp" alt="TH"><font size="+1">Tim Hortons:</font> <b>1rst Floor & 4th Floor</b></p>'+'<p><font size="+1">Bakers:</font> Full service restaurant serving breakfast and lunch weekdays. <b>4th Floor</b></p>'+'<p><font size="+1">Food Court:</font> Subway, Pizza Pizza, Chef Shawarma, Extreme Pita and much more. <b>2nd Floor</b></p>'+'<p><font size="+1">Starbucks:</font> <b>4th Floor</b></p>'+'<p><font size="+1">Campus Card Office:</font> <b>4th Floor</b></p>'};
+		hashTable1["VS"] = {Name: "Visualization & Simulation Building",Lat:45.380498 , Long:-75.70029,Info: ''};
+        hashTable1["P1"] = {Name: "Parking Lot P1",Lat: 45.380927, Long:-75.700448,Info: ''};
+        hashTable1["P2"] = {Name: "Parking Lot P2",Lat: 45.383564 , Long:-75.69665,Info: ''};
+		hashTable1["P3"] = {Name: "Parking Lot P3",Lat: 45.384838 , Long:-75.69268,Info: ''};
+		hashTable1["P4"] = {Name: "Parking Lot P4",Lat: 45.385369 , Long:-75.695411,Info: ''};
+		hashTable1["P5"] = {Name: "Parking Lot P5",Lat: 45.387667 , Long:-75.693399,Info: ''};
+		hashTable1["P6"] = {Name: "Parking Lot P6",Lat: 45.389427 , Long:-75.698688,Info: ''};
+		hashTable1["P7"] = {Name: "Parking Lot P7",Lat: 45.390218 , Long:-75.69661,Info: ''};
+		
+		
+        
+	//Store acronym in finalLocationAcr
+	var finalLocationAcr = prompt("Where would you like to go ?");                
+	  
+	//Check hashTable1 for acronym association
+	finalLocationFull = hashTable1[finalLocationAcr];
+			
+		//Loop until valid building acronym is entered.
+		while (!finalLocationFull) {
+		
+			//Invalid acronym. Output error and re-promt
+			alert("Please enter a valid building acronym.");
+			var finalLocationAcr = prompt("Where would you like to go ?");
+			finalLocationFull = hashTable1[finalLocationAcr];
+		}
+		
+		//Valid acronym. Output building name 
+		//alert("This is " + finalLocationFull.Name);
+                
+                
+	//Initialise map location and zoom
+	var myLatlng = new google.maps.LatLng(45.387581,-75.69602);
+	var mapOptions = {
+	zoom: 15,
+	center: myLatlng
+	}
+	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  
+	//Information box format
+	var contentString =  '<div id="content">'+
+	  '<div id="siteNotice">'+
+	  '</div>'+ //'<button>' + '</button>'+
+	  '<h2>' + finalLocationFull.Name + '</h2>'+
+	  '<div id="bodyContent">'+
+	  '<p>'+ finalLocationFull.Info + '</p>'+
+	  '</div>'+
+	  '</div>';
+
+	//maxWidth sets size of info box
+	var infowindow = new google.maps.InfoWindow({
+	  content: contentString,
+	  maxWidth: 700
+	});
+
+	//Pin drop on building that user is searching for
+	var buildingLoc = new google.maps.LatLng(finalLocationFull.Lat,finalLocationFull.Long);
+	var marker = new google.maps.Marker({
+		position: buildingLoc,
+		map: map,
+		title: finalLocationFull.Name,
+		animation: google.maps.Animation.DROP
+		});
+
+	//If pin has information, display it. If not then don't
+	if (finalLocationFull.Info != ''){
+		if (infowindow.close(map,marker) == null){
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.open(map,marker);
+				});
+		}else {	
+			google.maps.event.addListener(marker, 'click', function() {
+			infowindow.close(map,marker);
+			});
+		}
+	
+	google.maps.event.addListener(marker, 'click', toggleBounce);
+
+	
+	
+	
+		function toggleBounce() {
+
+		  if (marker.getAnimation() != null) {
+			marker.setAnimation(null);
+			infowindow.close(map,marker);
+		  } else {
+			marker.setAnimation(google.maps.Animation.BOUNCE);
+		  }
+		}
+	}
+	
+	
+	
+	
+//CODE FOR PLACING RECTANGLES OVER BUILDINGS
+//EACH BUILDING WILL CONSIST OF AN ARRAY OF LATLNG OBJECTS AND A POLYGON OBJECT TO DRAW USING THE COORDINATES.
+	var BUILDING_RECT_AH_COORD = [
+     new google.maps.LatLng(45.386639,-75.693821),
+      new google.maps.LatLng(45.386862,-75.693054),
+	  new google.maps.LatLng(45.386349,-75.692721),
+	   new google.maps.LatLng(45.386085,-75.693461)
+  ];
+  // Construct the polygon.
+  var BUILDING_RECT_AH = new google.maps.Polygon({
+    paths: BUILDING_RECT_AH_COORD,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+
+  BUILDING_RECT_AH.setMap(map);
+	
+	
+var BUILDING_RECT_FH_COORD = [
+     new google.maps.LatLng(45.387118,-75.695057),
+      new google.maps.LatLng(45.387323,-75.694345),
+	  new google.maps.LatLng(45.386735,-75.693976),
+	   new google.maps.LatLng(45.386615,-75.694385),
+	   new google.maps.LatLng(45.386582,-75.69437),
+	   new google.maps.LatLng(45.386542,-75.694524),
+	   new google.maps.LatLng(45.386558,-75.694538),
+	   new google.maps.LatLng(45.386508,-75.694719),
+  ];
+  // Construct the polygon.
+  var BUILDING_RECT_FH = new google.maps.Polygon({
+    paths: BUILDING_RECT_FH_COORD,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+
+  BUILDING_RECT_FH.setMap(map);	
+	
+
+var BUILDING_RECT_RO_COORD = [
+     new google.maps.LatLng(45.383443,-75.694678),
+      new google.maps.LatLng(45.383582,-75.694222),
+	  new google.maps.LatLng(45.383258,-75.694024),
+	   new google.maps.LatLng(45.383116,-75.694484)
+  ];
+  // Construct the polygon.
+  var BUILDING_RECT_RO = new google.maps.Polygon({
+    paths: BUILDING_RECT_RO_COORD,
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.8,
+    strokeWeight: 2,
+    fillColor: '#FF0000',
+    fillOpacity: 0.35
+  });
+
+  BUILDING_RECT_RO.setMap(map);	
+ 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}
+  
+  
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+      
+	  
+	
+	
+
+	  
+	  
+	  
+	  
+	  
+    </script>
+	
+	
+	
+	
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
