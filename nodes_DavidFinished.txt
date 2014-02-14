@@ -1,0 +1,195 @@
+
+//MACODRUM LIBRARY building
+var ML_NE_ENT = new object({
+		lat: 45.382193;
+		lng: -75.699408;
+		name:"ML_NE_ENT";
+		building:"ML";
+});
+
+
+//MACODRUM LIBRARY building
+var ML_N_ENT = new object({
+		lat: 45.382256;
+		lng: -75.699571;
+		name:"ML_N_ENT";
+		building:"ML";
+});
+
+
+
+//DUNTON TOWER building
+var DT_S_ENT = new object({
+		lat: 45.38251;
+		lng: -75.69925;
+		name:"DT_S_ENT";
+		building:"DT";
+});
+
+//PATERSON HALL building
+var PA_N_ENT = new object({
+		lat: 45.381918;
+		lng: -75.698668;
+		name:"PA_N_ENT";
+		building:"PA";
+});
+
+//PATERSON HALL building
+var PA_NE_ENT = new object({
+		lat: 45.382065;
+		lng: -75.698364;
+		name:"PA_NE_ENT";
+		building:"PA";
+});
+
+
+//PATERSON HALL building
+var PA_E_ENT = new object({
+		lat: 45.3818;
+		lng: -75.69848;
+		name:"PA_E_ENT";
+		building:"PA";
+});
+
+//PATERSON HALL building
+var PA_W_ENT = new object({
+		lat: 45.38151;
+		lng: -75.698362;
+		name:"PA_W_ENT";
+		building:"PA";
+});
+
+
+//LIFE SCIENCES RESEARCH BUILDING
+var LS_SE_ENT = new object({
+		lat: 45.381197;
+		lng: -75.697938;
+		name:"LS_SE_ENT";
+		building:"LS";
+});
+
+
+// AZRIELI PAVILION building
+var AP_E_ENT = new object({
+		lat: 45.382825;
+		lng: -75.698807;
+		name:"AP_E_ENT";
+		building:"AP";
+});
+
+//Court corner near east  MACODRUM LIBRARY
+var NE_ML_CRN = new object({
+		lat: 45.382293;
+		lng: -75.69936;
+		name:"NE_ML_CRN";
+		building:"null";
+});
+
+//Court corner near west TORY BUILDING
+var W_TB_CRN = new object({
+		lat: 45.382704;
+		lng: -75.698619;
+		name:"W_TB_CRN";
+		building:"null";
+});
+
+//Court corner near south TORY BUILDING
+var S_TB_CRN = new object({
+		lat: 45.38229;
+		lng: -75.698195;
+		name:"S_TB_CRN";
+		building:"null";
+});
+
+//Court corner near southeast  MACODRUM LIBRARY
+var SE_ML_CRN = new object({
+		lat: 45.381939;
+		lng: -75.698957;
+		name:"SE_ML_CRN";
+		building:"null";
+});
+
+//path point near south PATERSON HALL building
+var S_PA_PATH = new object({
+		lat: 45.381397;
+		lng: -75.698174;
+		name:"S_PA_PATH";
+		building:"null";
+});
+
+//point in the middle of the Court
+var M_COURT = new object({
+		lat: 45.382222;
+		lng: -75.69893;
+		name:"M_COURT";
+		building:"null";
+});
+
+
+
+
+
+// Feb 12, 2014
+
+//point at court entrance at west Tory Building
+var COURT_ENT_W_TB = new object({
+		lat: 45.382436;
+		lng: -75.698343;
+		name:"COURT_ENT_W_TB";
+		building:"null";
+});
+
+//point at entrance at southwest Tory Building
+var ENT_TB_SW = new object({
+		lat: 45.382474;
+		lng: -75.698212;
+		name:"ENT_TB_SW";
+		building:"Tory Building";
+});
+
+
+//point at entrance at northwest Tory Building
+var ENT_TB_NW = new object({
+		lat: 45.382629;
+		lng: -75.698348;
+		name:"ENT_TB_NW";
+		building:"Tory Building";
+});
+
+//Dunton Tower
+var NE_DT_PATH = new object({
+		lat: 45.382821;
+		lng: -75.699352;
+		name:"NE_DT_PATH";
+		building:"Dunton Tower";
+});
+
+
+//North Middle Entrance at Herzberg Laboratories
+var ENT_HP_NM = new object({
+		lat: 45.382222;
+		lng: -75.69893;
+		name:"ENT_HP_NM";
+		building:"Herzberg Laboratories";
+});
+
+//south Middle Entrance at Herzberg Laboratories
+var ENT_HP_SM = new object({
+		lat: 45.382097;
+		lng: -75.697334;
+		name:"ENT_HP_SM";
+		building:"Herzberg Laboratories";
+});
+
+
+
+
+//point in the middle of the Court
+var M_COURT = new object({
+		lat: 45.382222;
+		lng: -75.69893;
+		name:"M_COURT";
+		building:"null";
+});
+
+
