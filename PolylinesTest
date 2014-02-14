@@ -1,0 +1,80 @@
+
+//This is a version to test polylines and get their types etc. also a first test of the objects created by everyone
+
+
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+	
+function initialize() {
+	
+	//PATH_AT_AP = new Object();
+	//PATH_AT_AP.lat = 45.383286;
+	//PATH_AT_AP.lng = -75.699161;
+	//PATH_AT_AP.name = "PATH_AT_AP";
+	//PATH_AT_AP.building = "null";
+	
+		var PATH_AT_AP = new Object(
+{
+ 		lat: 45.383286,
+		lng:  -75.699161,
+		name: "PATH_AT_AP",
+		building: "null",
+});
+	var defaultCarleton = new google.maps.LatLng(45.387581,-75.69602);
+	var node1 = new google.maps.LatLng(45.385541,-75.69763);
+	var node2 = new google.maps.LatLng(45.385554,-75.696385);
+	var node3 = new google.maps.LatLng(45.384688,-75.696374);
+	var node4 = new google.maps.LatLng(45.383708,-75.696299);
+	var node5 = new google.maps.LatLng(45.383143,-75.696138);
+	var node6 = new google.maps.LatLng(45.382751,-75.695913);
+	var node7 = new google.maps.LatLng(45.382872,-75.695376);
+	var node8 = new google.maps.LatLng(45.383037,-75.695248);
+	var node9 = new google.maps.LatLng(45.383248,-75.694625);
+
+	
+
+  var mapOptions = {
+    zoom: 16,
+    center: defaultCarleton
+  }
+  var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  
+  var myPaths = [node1,node2,node3,node4,node5,node6,node7,node8,node9];
+	
+	
+	var mypolyLine = new google.maps.Polyline({
+	path: myPaths,
+	geodesic: true,
+	strokeColor: '#009ACD',
+	strokeOpacity: 1,
+	strokeWeight: 5
+	});
+	
+	mypolyLine.setMap(map);
+	}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+		<script>
+	//setInterval(function(){alert("Hello")},10000);
+</script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
