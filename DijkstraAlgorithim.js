@@ -31,7 +31,7 @@
  **************************************************************/
 
 
-function dijkstra_algorithim(graph, start_point, end_point)
+function dijkstra_algorithim(graph, start_point, end_point) 
 {
 	var INF = Number.MAX_VALUE;									// max value
 	var NOT_DEFINED = Number.NaN;								// not defined
@@ -41,7 +41,7 @@ function dijkstra_algorithim(graph, start_point, end_point)
 	var distance = { };										
 	var prev = { };												
 	
-	var Q = { };				// copy of graph
+	var Q = [ ];				// copy of graph
 	var paths = [];			// most optimal path
 	 
 	
@@ -103,10 +103,17 @@ function dijkstra_algorithim(graph, start_point, end_point)
     
 		else
 		{
-			delete Q[vertex_min];
+			// deletes vertex_min from the copy array
+			for (var i = 0; i < Q.length; i++)
+			{
+				if (Q[i] == vertex_min)
+				{
+					delete Q[i];
+				}
+			}
 			
 			// finds each neighbouring node of vertex_min in the graph
-			for (neighbour in graph[vertex_min])
+			for (neighbour in vertex_min.surr)
 			{
 				 // adds the distances together if the neighbour is in Q
 				 if (neighbour in Q)
