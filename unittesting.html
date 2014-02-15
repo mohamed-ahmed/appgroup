@@ -76,9 +76,24 @@
 		infowindow.open(map,marker);
 		});
 		
+
+		
 		// To add the marker to the map, call setMap();
 		marker.setMap(map);	
-			
+		var length=PATH_BETW_AH_IH.SURR.length;
+		
+		for(var w=0;w<length;w++){
+		var getX=(PATH_BETW_AH_IH.SURR[w].lat);
+		var getY=(PATH_BETW_AH_IH.SURR[w].lng);
+		var markcoord=new google.maps.LatLng(getX,getY);
+		var marker2 = new google.maps.Marker({
+		position: markcoord,
+		map: map,
+		title:"Hello World!"
+		});
+		
+	
+		}	
 			
 			
 			
