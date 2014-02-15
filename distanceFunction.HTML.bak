@@ -1,0 +1,27 @@
+function distance(node1,node2)
+{
+temp = (node1.lat - node2.lat)*(node1.lat - node2.lat) + (node1.lng - node2.lng)*(node1.lng - node2.lng);
+return Math.sqrt(temp);
+}
+
+
+
+
+
+
+
+
+
+function distance(node1,node2)
+{
+temp = Math.pow((node1.lat - node2.lat), 2)) + Math.pow((node1.lng - node2.lng), 2));
+return Math.sqrt(temp);
+}
+
+
+
+function distance(node1,node2, node3, node4)
+{
+temp = (node1-node2)*(node1-node2)+(node3-node4)*(node3-node4);
+return Math.sqrt(temp);
+}

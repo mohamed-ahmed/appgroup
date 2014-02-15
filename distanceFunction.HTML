@@ -1,0 +1,6 @@
+function distance(node1,node2)
+{
+	temp = (node1.lat - node2.lat)*(node1.lat - node2.lat) + (node1.lng - node2.lng)*(node1.lng - node2.lng);
+	return Math.sqrt(temp);
+}
+
