@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+	
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
+    </script>
+   
+   <script type="text/javascript">
+
+////////////////////////////////////////////////////////////////////
+////////////////////START OF POINT ARRAYS///////////////////////////
+		
+	S_SD.SURR = new Array (SD_ENT_MAIN,SD_ENT_MAIN2,C0_ENT_SIDE,E_SP);	
+	W_SD.SURR = new Array (N_SD,E_SP,LE_ENT_MAIN,SP_ENT_MAIN,SD_ENT_SIDE);	
+	E_SD.SURR = new Array (SD_ENT_SIDE2,FE_SD);
+	FE_SD.SURR = new Array (E_SD);	
+	N_SD.SURR = new Array (W_SD,SD_ENT_SIDE);	
+	E_SP.SURR = new Array (S_SD,W_SD,E_RU);	
+	W_CO.SURR = new Array (GH_ENT_SIDE,E_RU,W_LX);	
+	E_RU.SURR = new Array (E_RU,GH_ENT_SIDE,W_LX);	
+	E_GH.SURR = new Array (GH_ENT_SIDE2,LX_ENT_SIDE2,E_LX,CO_ENT_MAIN2);	
+	E_LX.SURR = new Array (E_GH,LX_ENT_SIDE2,LX_ENT_SIDE3,E_RH);	
+	W_LX.SURR = new Array (W_CO,LX_ENT_SIDE,PATH_BTW_FR_RH);	
+	PATH_BTW_FR_RH.SURR = new Array (W_LX,FR_ENT_MAIN,E_FR); /// DOUBLE CHECK
+	E_RH.SURR = new Array (E_LX,S_RH2,INTR_CMPA_LIBR,PR_ENT_SIDE3);	
+	INTR_CMPA_LIBR.SURR = new Array (E_RH,NPH_LIBR,PH_ENT_MAIN,PR_ENT_SIDE3); //MAKE SURE NO1 ELSE WROTE THIS TOO
+	NPH_LIBR.SURR = new Array (INTR_CMPA_LIBR,PATH_BETW_LH_PH,PH_ENT_MAIN); //MAKE SURE NO1 ELSE WROTE THIS TOO
+	PATH_BETW_LH_PH.SURR = new Array (NPH_LIBR,E_FR);
+	S_RH.SURR = new Array (S_RH2,RH_ENT_MAIN,RH_ENT_SIDE,PH_ENT_SIDE,E_FR);	
+	E_FR.SURR = new Array (PATH_BTW_FR_RH,FR_ENT_MAIN,S_RH,PATH_BETW_LH_PH);	//DOUBLE CHECK
+	S_LH.SURR = new Array (W_RU);	
+	E_RU.SURR = new Array (W_CO,W_SP,RU_ENT_MAIN,RU_ENT_SIDE,CO_ENT_MAIN);	
+	S_RU.SURR = new Array (W_RU,RU_ENT_SIDE2,RU_ENT_SIDE3,W_GR);	
+	W_GR.SURR = new Array (S_RU,W_FR);	
+	W_FR.SURR = new Array (E_GR,GR_ENT_SIDE,FR_ENT_SIDE,FR_ENT_SIDE2,FR_ENT_SIDE3);	
+	W_LH.SURR = new Array (W_FR,LH_ENT_SIDE,FR_ENT_SIDE3);	
+	LE_ENT_MAIN.SURR = new Array (W_SD,S_LE);	
+	SP_ENT_MAIN.SURR = new Array (E_SP);	
+	SP_ENT_SIDE.SURR = new Array (E_SP);	
+	SD_ENT_MAIN.SURR = new Array (E_SP,S_SD);	///MAY WANT C0_ENT_SIDE
+	SD_ENT_MAIN2.SURR = new Array (E_SP,S_SD);	//MAY WANT C0_ENT_SIDE
+	SD_ENT_SIDE.SURR = new Array (N_SD,W_SD);	
+	SD_ENT_SIDE2.SURR = new Array (E_SD);	
+	CO_ENT_MAIN.SURR = new Array (E_RU);	
+	CO_ENT_MAIN2.SURR = new Array (E_GH);	///NEEDS ANOTHER POINT NORTH OF RES ON CAMPUS AVE
+	C0_ENT_SIDE.SURR = new Array (E_SP,S_SD,SD_ENT_MAIN,SD_ENT_MAIN2);///////
+	RU_ENT_MAIN.SURR = new Array (E_RU);	
+	RU_ENT_SIDE1.SURR = new Array (E_RU);	
+	RU_ENT_SIDE2.SURR = new Array (W_RU,S_RU);	
+	RU_ENT_SIDE3.SURR = new Array (W_RU,S_RU);	
+	GH_ENT_SIDE.SURR = new Array (W_LX,W_CO);	
+	GH_ENT_SIDE2.SURR = new Array (E_LX,E_GH);	
+	LX_ENT_MAIN.SURR = new Array (W_LX,E_LX);	
+	LX_ENT_SIDE.SURR = new Array (W_LX);	
+	LX_ENT_SIDE2.SURR = new Array (E_LX,E_GH);	
+	LX_ENT_SIDE3.SURR = new Array (E_LX,E_RH);	
+	RH_ENT_MAIN.SURR = new Array (S_RH,S_RH2);	
+	RH_ENT_SIDE.SURR = new Array (S_RH,S_RH2);	
+	S_RH2.SURR = new Array (RH_ENT_SIDE,PH_ENT_SIDE3,E_RH,S_RH); 
+	PH_ENT_MAIN.SURR = new Array (NPH_LIBR,NTR_CMPA_LIBR);	
+	PH_ENT_SIDE.SURR = new Array (S_RH,E_FR);	
+	PH_ENT_SIDE2.SURR = new Array (S_RH2);	
+	PH_ENT_SIDE3.SURR = new Array (E_RH,INTR_CMPA_LIBR);	
+	GR_ENT_SIDE.SURR = new Array (PATH_BTW_FR_RH,W_FR);	
+	FR_ENT_MAIN.SURR = new Array (E_FR,PATH_BTW_FR_RH); ///CHECK MAP
+	FR_ENT_SIDE.SURR = new Array (W_FR); 	
+	FR_ENT_SIDE2.SURR = new Array (W_FR,W_LH);	
+	FR_ENT_SIDE3.SURR = new Array (W_FR,W_LH);	
+	LH_ENT_MAIN.SURR = new Array (PATH_BETW_LH_PH);
+	LH_ENT_SIDE.SURR = new Array (W_LH);
+
+    </script>
+	
+	
+  </head>
+  <body>
+    
+	<div id="map-canvas"/>
+  </body>
+</html>
