@@ -57,12 +57,13 @@ function dijkstra_algorithim(graph, start_point, end_point)
 	
 	
 	// distance from source to source
-	distance[source] = 0;
+	distance[start_point] = 0;
 	
 	
 	while (Q.length > 0)
 	{
-		
+		var vertex_min, alt;
+    
 		for (vertex in Q)
 		{
 			if (distance[vertex] < dist_min)
@@ -92,7 +93,7 @@ function dijkstra_algorithim(graph, start_point, end_point)
             vrtx_path = prev[vrtx_path];		// gets the next node in prev
        }         
        
-       paths.unshift(source);  // adds source to front of array
+       paths.unshift(start_point);  // adds source to front of array
             
        return paths;					// returns the shortest path
 		}
@@ -113,12 +114,12 @@ function dijkstra_algorithim(graph, start_point, end_point)
 			}
 			
 			// finds each neighbouring node of vertex_min in the graph
-			for (neighbour in vertex_min.surr)
+			for ( var neighbour in vertex_min.surr)
 			{
 				 // adds the distances together if the neighbour is in Q
 				 if (neighbour in Q)
          {
-         		var alt = distance[vertex_min] + find_distance(vertex_min, neighbour); 
+         		alt = distance[vertex_min] + find_distance(vertex_min, neighbour); 
          }
          
                 
