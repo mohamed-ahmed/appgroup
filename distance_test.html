@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+  
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+	
+    <script type="text/javascript"src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
+	
+    </script>
+	
+    <script type="text/javascript">
+	
+	// POINTS
+	
+		// 3 surrounding points around PATH_BETW_AH_IH
+	var ALUM_BETW_SMC = new Object({
+		lat : 45.386093,
+		lng : -75.693547,
+		name : "ALUM_BETW_SMC",
+		building : "AH"
+		});
+	var IH_NE_CRN = new Object({
+		lat : 45.386285,
+		lng : -75.692217,
+		name : "IH_NE_CRN",
+		building : "IH"
+		});
+	var IH_NW_CRN = new Object({
+		lat : 45.386003,
+		lng : -75.693134,
+		name : "IH_NW_CRN",	
+		building : "IH"
+		});
+	
+		// PATH_BETW_AH_IH is the destination(end) point
+	var PATH_BETW_AH_IH = new Object({
+		lat : 45.386195,
+		lng : -75.692941,
+		name : "PATH_BETW_AH_IH",
+		building : "null"
+		});
+		
+		// ML_NE_ENT is the starting (start) point
+	var ML_NE_ENT = new Object({
+		lat: 45.382193,
+		lng: -75.699408,
+		name:"ML_NE_ENT",
+		building:"ML"
+		});
+		
+		// surrounding point array around PATH_BETW_AH_IH
+	//var PATH_BETW_AH_IH.SURR = new Array (ALUM_BETW_SMC , IH_NE_CRN , IH_NW_CRN);
+	
+	/*
+	* //////////FUNCTIONS TO BE TESTED////////////////////////////////
+	*/
+	
+	function lineDistance( point1, point2 )
+	{
+		var xs = 0;
+		var ys = 0;
+		 
+		xs = point2.lng - point1.lng;
+		xs = xs * xs;
+		 
+		ys = point2.lon - point1.lon;
+		ys = ys * ys;
+		 
+		return Math.sqrt( xs + ys );
+	}
+
+	function closestPoint( point1 , point2 )
+	{
+		var min = point2.SURR[0];
+		var closestPoint;
+		
+		for (var i = 0 ; i < point2.SURR.length ; i++)
+		{w
+			if (lineDistance(point1 , point2.SURR[i]) < min)
+			{
+				min = lineDistance(point1 , point2.SURR[i]);
+				closestPoint = point2.SURR[i];
+			}
+		}
+		return closestPoint;
+	}
+	
+	/*
+	* //////////FUNCTIONS TO BE TESTED////////////////////////////////
+	*/
+	
+	function initialize() 
+	{
+		var mapOptions = 
+		{
+		  center: new google.maps.LatLng( 45.388081, -75.69602),
+		  zoom: 15
+		};
+		
+		var map = new google.maps.Map(document.getElementById("map-canvas"),mapOptions);
+		
+		// place 5 markers on the map (I know there is a shorter way)
+		
+		// 1st marker
+		var marker = new google.maps.Marker({
+			position: ALUM_BETW_SMC,
+			map: map,
+			title: 'Alumni Hall between Sports Medical Centre'
+			});
+		// 2nd marker	
+		var marker = new google.maps.Marker({
+			position: IH_NE_CRN,
+			map: map,
+			title: 'Ice House North East Corner'
+			});
+		// 3rd marker
+		var marker = new google.maps.Marker({
+			position: IH_NW_CRN,
+			map: map,
+			title: 'Ice House North West Corner'
+			});
+		// 4th marker	
+		var marker = new google.maps.Marker({
+			position: PATH_BETW_AH_IH,
+			map: map,
+			title: 'Path between Alumni Hall and Ice House'
+			});
+		// 5th marker	
+		var marker = new google.maps.Marker({
+			position: ML_NE_ENT,
+			map: map,
+			title: 'MacOdrum Library'
+			});
+			
+		// TEST CODE
+		
+		
+		/*
+		* //////////DRAW A POLYLINE BETWEEN TWO POINTS////////////////////////////////
+		*/
+		
+		var flightPlanCoordinates = [
+			new google.maps.LatLng(ML_NE_ENT.lat, ML_NE_ENT.lng),
+			new google.maps.LatLng(ALUM_BETW_SMC.lat , ALUM_BETW_SMC.lng),
+			new google.maps.LatLng(IH_NE_CRN.lat , IH_NE_CRN.lng),
+			new google.maps.LatLng(IH_NW_CRN.lat , IH_NW_CRN.lng),
+			new google.maps.LatLng(PATH_BETW_AH_IH.lat, PATH_BETW_AH_IH.lng)
+			];
+			
+		var flightPath = new google.maps.Polyline({
+			path: flightPlanCoordinates,
+			geodesic: true,
+			strokeColor: '#FF0000',
+			strokeOpacity: 1.0,
+			strokeWeight: 2
+		  });
+
+		flightPath.setMap(map);
+
+		
+		/*
+		* //////////DRAW A POLYLINE BETWEEN TWO POINTS////////////////////////////////
+		*/
+		
+	}
+	
+	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	</script>
+	
+  </head>
+  
+  <body>
+  
+    <div id="map-canvas"/>
+	
+  </body>
+  
+</html>
