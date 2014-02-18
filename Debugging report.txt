@@ -1,0 +1,70 @@
+Debugging Report
+
+2 nodes are defined twice:
+
+		Eric's nodes
+			E_RU 								
+			E_RU 								
+			
+		David's Nodes
+			M_COURT 						
+			M_COURT 						
+			
+
+78 undeclared variables:
+	
+		ALM_CR_E 										
+		AT_AP 											
+		BETW_AA_ME 									
+		C0_ENT_SIDE									
+		E_GR												
+		ENT													
+		FS_HC_PATH									
+		FS_LB_PATH									
+		INTR_CMPA_LIBR							
+		LE_SE_ENT										
+		LIBR												
+		ME4_S												
+		N_CRN_LB_PATH								
+		N_HC												
+		N_LH												
+		N_LH_LIBR										
+		N_ML_ENT										
+		NE_ML_ENT										
+		NML_LIBR										
+		NTR_CMPA_LIBR								
+		PATH_BETN_HZ_SC							
+		PATH_BETW_BC_AT							
+		PATH_BETW_LH_PH							
+		PATH_BETW_PH_LH							
+		PATH_BETW_RB_HZ							
+		PATH_BETW_SC								
+		PATH_BTW_FR_RH							
+		PATH_CB_AT									
+		PATH_CRN_SC									
+		PATH_HZ_A										
+		PATH_P2_B_ENST							
+		PR_ENT_SIDE3								
+		RO_ENT_PATH									
+		RO_OT_W											
+		S_CRN_NW_PATH								
+		S_DT_ENT										
+		S_LE												
+		S_SR_PATH										
+		S_VS_PATH										
+		SW_SH_PATH									
+		SW_SR_PATH									
+		W_RU												
+		W_SP												
+		
+
+2 Conflicts:
+
+		Eric's: 
+			INTR_CMPA_LIBR.SURR = new Array(E_RH, NPH_LIBR, PH_ENT_MAIN, PR_ENT_SIDE3);
+			NPH_LIBR.SURR = new Array(INTR_CMPA_LIBR, PATH_BETW_LH_PH, PH_ENT_MAIN);
+		
+		Varun's:
+			INTR_CMPA_LIBR.SURR = new Array(NPH_LIBR, MC_ENT_N, NMC_LIBR, E_GH);
+			NPH_LIBR.SURR = new Array(PATH_BETW_PH_LH, N_LH, LIBR, MC_ENT_NW, PH_ENT_MAIN, INTR_CMPA_LIBR);
+			
