@@ -1,0 +1,104 @@
+
+<!Luke Morrison ->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Simple markers</title>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script src = "point2.js"> </script>
+    <script src = "point.js"> </script>
+    <script>
+// This example takes in any point, and plots all of the surrounding points
+//Into a graphic polyline
+function accumulate_points(temp){
+	if( temp.building != "null"){
+		alert("This is in building " + temp.building);
+		}
+	var map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
+	//make the array in a differant way i.e. a = new Array)
+	var myPath = new Array();
+		
+	for (var p = 0; p < temp.surr.length; p++){
+		myPath.push(temp);
+		myPath.push(temp.surr[p]);
+	}	
+	var nodes = new Array();
+	for(var i=0; i < myPath.length; i++){
+		var lt = myPath[i].lat;
+		var ln = myPath[i].lng;
+		var ltlng = new google.maps.LatLng( myPath[i].lat, myPath[i].lng );
+		nodes.push(ltlng);
+	}
+	return nodes;
+}
+function initialize() {
+//CHANGE THIS VALUE TO SEE SURROUNDING POINTS 
+	temp = A18;
+	var mapOptions = {
+		zoom: 18,
+		center: new google.maps.LatLng(temp.lat, temp.lng),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	if( temp.building != "null"){
+		alert("This is in building " + temp.building);
+		}
+	var map = new google.maps.Map(document.getElementById('map-canvas'),
+		mapOptions);
+	//make the array in a differant way i.e. a = new Array)
+	var myPath = new Array();
+	for(var index = 0; index < 200; index++){	
+		for (var p = 0; p < temp.surr.length; p++){
+			myPath.push(temp);
+			myPath.push(temp.surr[p]);
+		}	
+		if (temp.surr[0] && temp.surr[0].building == "null")temp = temp.surr[0];
+		if (temp.surr[1] && temp.surr[1].building == "null")temp = temp.surr[1];
+		for (var p = 0; p < temp.surr.length; p++){
+			myPath.push(temp);
+			myPath.push(temp.surr[p]);
+		}	
+		if (temp.surr[0] && temp.surr[0].building == "null")temp = temp.surr[0];
+		if (temp.surr[1] && temp.surr[1].building == "null")temp = temp.surr[1];
+		
+		/*
+		if (temp.surr[3])temp = temp.surr[3];
+		if (temp.surr[2])temp = temp.surr[2];
+		if (temp.surr[1])temp = temp.surr[1];*/
+	}
+	
+	var nodes = new Array();
+	for(var i=0; i < myPath.length; i++){
+		var lt = myPath[i].lat;
+		var ln = myPath[i].lng;
+		var ltlng = new google.maps.LatLng( myPath[i].lat, myPath[i].lng );
+		nodes.push(ltlng);
+	}
+	  
+	var flightPath = new google.maps.Polyline({
+		path: nodes,
+		geodesic: true,
+		strokeColor: '#FF0000',
+		strokeOpacity: 1.0,
+		strokeWeight: 2
+	  });
+	  flightPath.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
