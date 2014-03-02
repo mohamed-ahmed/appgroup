@@ -26,7 +26,7 @@ function CreateGenericInfoWindow (FinalLocation, Width) {
 	  '<h2>' + FinalLocation.Name + '</h2>'+
 	  '<div id="bodyContent">'+
 	  '<p>'+ FinalLocation.Info + '</p>'+
-	  '</div>'+ '<button>Click here to get directions</button>'
+	  '</div>'+ '<button>Click here to get directions</button>
 	  '</div>';
 	
 	//maxWidth sets size of info box
