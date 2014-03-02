@@ -28,7 +28,6 @@ function initialize() {
 	  }
   var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   var a = PromptLocationString();
-
   var FinalLatLng = new google.maps.LatLng(a.Lat, a.Long);
   var marker = DisplayLocationInformation(a, map);
 

@@ -31,7 +31,6 @@ function initialize() {
 
   var FinalLatLng = new google.maps.LatLng(a.Lat, a.Long);
   var marker = DisplayLocationInformation(a, map);
-  var infowindow = CreateGenericInfoWindow(a, a.Name, 700);
 
 }
 
