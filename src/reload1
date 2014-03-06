@@ -1,0 +1,56 @@
+function reinitialize() {
+		var mapOptions = {
+          center: new google.maps.LatLng( 45.388081, -75.69602),
+          zoom: 15
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);	
+		alert(DESTINATION.building + ' ' + DESTINATION.lat + ' ' + DESTINATION.lng);
+		
+		var dest = DESTINATION;	// destination
+		var loc = C1;		// location
+		var myLatlng = new google.maps.LatLng(loc.lat,loc.lng);
+		var destLatlng= new google.maps.LatLng(dest.lat,dest.lng);
+		
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			title:"location"
+		});
+		//sets up marker to destination
+		
+		var destmarker = new google.maps.Marker({
+			position: destLatlng,
+			map: map,
+			title:"destination"
+		});
+		
+		var closest_pt = closest_pt_mark(dest,loc);
+		alert("DEFEINITELY MAN");
+		var pathArray=new Array();
+		
+		pathArray.push(new google.maps.LatLng(loc.lat,loc.lng))
+		
+		
+		
+		while ( loc.building != dest.building ) {
+			var closest_pt = closest_pt_mark(dest,loc);
+			var markcoord=new google.maps.LatLng(closest_pt.lat,closest_pt.lng);
+			pathArray.push(markcoord);
+			loc=closest_pt;
+		}
+		
+		var flightPath = new google.maps.Polyline({
+		path: pathArray,
+		geodesic: true,
+		strokeColor: '#FF0000',
+		strokeOpacity: 1.0,
+		strokeWeight: 2
+		});
+		alert("We got here");
+		flightPath.setMap(map);
+}
+		
+
+	
+
+		

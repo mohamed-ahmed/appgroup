@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
+    </script>
+    
+    <!--Google Map API -->
+    <!--Load the initial conditions of the map -->
+    <script src="load.js"></script> 
+    <!--Load the adjusted conditions of the map -->
+    <script src="reload.js"></script>
+    
+    
+    <!--DATA-->
+    <!--Load the UI data from the buildings -->
+    <script src="View/GroupedBuildingItems.js"></script>
+ 	<!-- Load all data east of otrain -->
+ 	<script src="Model/DataEastOtrain.js"></script>
+ 	
+ 	<!-- LOGIC-->
+ 	<script src ="ViewModel/ClosestPoint.js"> </script><
+ 	
+ 	<!-- Global Variables -->
+    <script>
+    	//Global variables go here
+    	
+    	var DESTINATION;//This is the global destination object
+    </script>
+    
+    <!--This is the main page selector for the buildings -->
+    <form action="">
+	Select the building you wish to go to:
+	<select id="myList" onchange="AcronymToBuilding(this)">
+	<option></option>
+	<!--<option value="SecurityOffice">Security Office</option>
+	<option value="Otrain">O-Train</option>
+	<option value="MainBusStop">Main Bus Stop</option>
+	<option value="SteacieBusStop">Steacie Bus Stop</option>
+	<option value="GymBusStop">Gym Bus Stop</option>
+	<option value="RegistrarsOffice">Registrar's Office</option>-->
+	<option value="AA">[AA] Architechture Building</option>
+	<option value="AH">[AH] Alumni Hall</option>
+	<option value="AC">[AC] Athletics Building</option>
+	<option value="AP">[AP] Azrieli Pavillion</option>
+	<option value="AT">[AT] Azrieli Theater</option>
+	<option value="IH">[IH] Carleton Ice House</option>
+	<option value="TT">[TT] Carleton Technology & Training Center (CTTC)</option>
+	<option value="CB">[CB] Canal Building</option>
+	<option value="CC">[CC] Colonel By Child Care Center</option>
+	<option value="DT">[DT] Dunton Tower</option>
+	<option value="FH">[FH] Field House</option>
+	<option value="FR">[FR] Frontenac House</option>
+	<option value="GH">[GH] Glengary House</option>
+	<option value="GR">[GR] Grenville House</option>
+	<option value="HP">[HP] Herzberg Building</option>
+	<option value="HC">[HC] Human Computer Interaction Building</option>
+	<option value="LH">[LH] Lanark House</option>
+	<option value="LE">[LE] Leeds House</option>
+	<option value="LS">[LS] Life Sciences Research Building</option>
+	<option value="LA">[LA] Loeb Building</option>
+	<option value="LX">[LX] Lennox and Addington House</option>
+	<option value="ME">[ME] Mackenzie Building</option>
+	<option value="ML">[ML] MacOdrum Library</option>
+	<option value="MB">[MB] Maintenance Building</option>
+	<option value="MC">[MC] Minto Center for Advanced Studies in Engineering (CASE)</option>
+	<option value="NB">[NB] Nesbitt Biology Building</option>
+	<option value="NW">[NW] National Wildlife Research Building</option>
+	<option value="PA">[PA] Patterson Hall</option>
+	<option value="PG">[PG] Parking Garage</option>
+	<option value="PH">[PH] Prescott House</option>
+	<option value="RB">[RB] River Building</option>
+	<option value="RH">[RH] Renfrew House</option>
+	<option value="CO">[CO] Residence Commons</option>
+	<option value="RO">[RO] Robertson Hall</option>
+	<option value="RU">[RU] Russel House</option>
+	<option value="SP">[SP] St. Patrick's Building</option>
+	<option value="SR">[SR] Social Science Research Building</option>
+	<option value="SA">[SA] Southam Hall</option>
+	<option value="SC">[SC] Steacie Building</option>
+	<option value="SD">[SD] Stormont and Dundas House</option>
+	<option value="TC">[TC] Tennis Center</option>
+	<option value="TB">[TB] Tory Building</option>	
+	<option value="UC">[UC] University Center</option>
+	<option value="VS">[VS] Visualization & Simulation Building</option>
+	<option value="P1">[P1] Parking Lot P1</option>
+	<option value="P2">[P2] Parking Lot P2</option>
+	<option value="P3">[P3] Parking Lot P3</option>
+	<option value="P4">[P4] Parking Lot P4</option>
+	<option value="P5">[P5] Parking Lot P5</option>
+	<option value="P6">[P6] Parking Lot P6</option>
+	<option value="P7">[P7] Parking Lot P7</option>
+	</select>
+	</form>
+	
+	<script>
+    function AcronymToBuilding(sel) {
+      	DESTINATION = BuildingDataInfo[sel.value];
+    	DESTINATION.building = sel.value;//NEED TO GIVE IT THE NA<E //Give it a building attribute
+    	 	
+    	reinitialize();
+    	
+    }
+    </script>
+    <script type="text/javascript">	 
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>

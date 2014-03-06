@@ -15,25 +15,34 @@ function CreateGenericMarker (Map, LatLngObject, Title) {
 	});
 	return marker;
 }
+function PathFinder(){
+	alert();
+}
 /*
  * Create a generic Information Window and return it 
  */
 function CreateGenericInfoWindow (FinalLocation, Width) {
 	//Information box format
+	var directions = '<button id="test" >Click here to get directions</button>';
 	var contentString =  '<div id="content">'+
 	  '<div id="siteNotice">'+
 	  '</div>'+ //'<button>' + '</button>'+
 	  '<h2>' + FinalLocation.Name + '</h2>'+
 	  '<div id="bodyContent">'+
-	  '<p>'+ FinalLocation.Info + '</p>'+
-	  '</div>'+ '<button>Click here to get directions</button>'
+	  '<p>'+ FinalLocation.Info + '</p>'+ "<input type='button' onclick='alert(\"Width\")'>"+ 
+	  '</div>'+ 
 	  '</div>';
-	
+	'editPreference("+preference+")'
 	//maxWidth sets size of info box
 	var infowindow = new google.maps.InfoWindow({
 	  content: contentString,
 	  maxWidth: 700
 	});
+	//var button = document.getElementByTag('button');
+	//button.innerHTML = "HI";
+	//google.maps.event.addListener(button, 'click', function() {
+	//	alert("Hello word");
+	//})
 	return infowindow;
 }
 
@@ -53,7 +62,7 @@ function PromptLocationString() {
 /*
  * This will place a marker on that given point and put an event on it 
  */
-function DisplayLocationInformation (FinalLocation, Map) {
+function DisplayLocationInformation(FinalLocation, Map) {
 	//First give it a Lat Long place
 	var FinalLatLng = new google.maps.LatLng(FinalLocation.Lat, FinalLocation.Long);
 	var marker = CreateGenericMarker(Map, FinalLatLng, FinalLocation.Name);	

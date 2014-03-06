@@ -1,0 +1,27 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var foo = function () {}
+
+function pickAFunction(a_or_b) {
+    var funcs = {
+        a: function () {
+            alert('a');
+        },
+        b: function () {
+            alert('b');
+        }
+    };
+    foo = funcs[a_or_b];
+}
+
+foo();
+pickAFunction('a');
+
+pickAFunction('b');
+
+</script>
+</body>
+</html>

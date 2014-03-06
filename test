@@ -1,1 +1,13 @@
-skldhgs;kjdbg
+<html>
+<head>
+</head>
+<body>
+<script>
+function hell(){
+	function hello(){
+		alert("hi");
+	}
+}
+</script>
+</body>
+</html>
