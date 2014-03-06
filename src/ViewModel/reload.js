@@ -31,13 +31,16 @@ function reinitialize() {
 		
 		var pathArray=new Array();
 		pathArray.push(new google.maps.LatLng(loc.lat,loc.lng))
-		//var path_f=getpath(loc,dest,dest.building);
+
+
 		var count = 12;
 
 
 		while ( loc.building != dest.building ) {
 			count --;
-			alert(loc.building);
+	//Does the final array have a duplicate?
+	//Etc
+	
 			if (count == 0 )
 			{
 				alert("infintite loop, exciting");
@@ -45,6 +48,18 @@ function reinitialize() {
 			}
 			var closest_pt=closest_pt_mark(dest,loc);
 			var markcoord=new google.maps.LatLng(closest_pt.lat,closest_pt.lng);
+			//if mark coord is equal to one of the three previous points
+			//is_prev(Array, 3), check previous 3 points, just toss in an integer
+			
+			//if next point is further than the current point
+			//is_not_best
+			
+			//if there exists a duplicate
+			//is_dup(pathArray)
+			
+			//if array gets really big
+			//is_really_big(Array.length)
+			
 			pathArray.push(markcoord);
 			loc=closest_pt;
 		}

@@ -3,37 +3,48 @@ function reinitialize() {
           center: new google.maps.LatLng( 45.388081, -75.69602),
           zoom: 15
         };
+        alert ("building = " + DESTINATION.building + "lat " + DESTINATION.lat + " lng " + DESTINATION.lng);
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);	
-		alert(DESTINATION.building + ' ' + DESTINATION.lat + ' ' + DESTINATION.lng);
+		// 	You can enter any points here and it should draw the polyline.
+		var LocalDestination = new Object();
 		
-		var dest = DESTINATION;	// destination
-		var loc = C1;		// location
+		LocalDestination.building = DESTINATION.building;
+		LocalDestination.lat = DESTINATION.lat;
+		LocalDestination.lng = DESTINATION.lng;
+		
+		var dest=LocalDestination;	// destination
+		var loc=C4;		// location
+		
 		var myLatlng = new google.maps.LatLng(loc.lat,loc.lng);
 		var destLatlng= new google.maps.LatLng(dest.lat,dest.lng);
-		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			title:"location"
 		});
 		//sets up marker to destination
-		
 		var destmarker = new google.maps.Marker({
 			position: destLatlng,
 			map: map,
 			title:"destination"
 		});
 		
-		var closest_pt = closest_pt_mark(dest,loc);
-		alert("DEFEINITELY MAN");
 		var pathArray=new Array();
-		
 		pathArray.push(new google.maps.LatLng(loc.lat,loc.lng))
-		
-		
-		
+
+
+		var count = 12;
+
+
 		while ( loc.building != dest.building ) {
-			var closest_pt = closest_pt_mark(dest,loc);
+			count --;
+
+			if (count == 0 )
+			{
+				alert("infintite loop, exciting");
+				break;
+			}
+			var closest_pt=closest_pt_mark(dest,loc);
 			var markcoord=new google.maps.LatLng(closest_pt.lat,closest_pt.lng);
 			pathArray.push(markcoord);
 			loc=closest_pt;
@@ -46,11 +57,9 @@ function reinitialize() {
 		strokeOpacity: 1.0,
 		strokeWeight: 2
 		});
-		alert("We got here");
-		flightPath.setMap(map);
-}
 		
-
-	
+		flightPath.setMap(map);
+		}
+		
 
 		

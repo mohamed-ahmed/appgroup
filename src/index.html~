@@ -15,8 +15,7 @@
     <!--Load the initial conditions of the map -->
     <script src="load.js"></script> 
     <!--Load the adjusted conditions of the map -->
-    <script src="reload.js"></script>
-    
+    <script src="ViewModel/reload.js"></script>
     
     <!--DATA-->
     <!--Load the UI data from the buildings -->
@@ -31,8 +30,8 @@
  	<!-- Global Variables -->
     <script>
     	//Global variables go here
-    	
     	var DESTINATION;//This is the global destination object
+    	var LOCATION;
     </script>
     
     <!--This is the main page selector for the buildings -->
@@ -103,10 +102,10 @@
 	<script>
     function AcronymToBuilding(sel) {
       	DESTINATION = BuildingDataInfo[sel.value];
-    	DESTINATION.building = sel.value;//NEED TO GIVE IT THE NA<E //Give it a building attribute
-    	
+    	DESTINATION.building = sel.value;
     	reinitialize();	
     }
+    
     </script>
     <script type="text/javascript">	 
       google.maps.event.addDomListener(window, 'load', initialize);

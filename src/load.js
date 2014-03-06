@@ -7,11 +7,5 @@ function initialize() {
             mapOptions);	
 		
 		}
-		
-	/*
-	* A function to find the closest point
-	*@param  desti - The destination point
-	*@param  loca - The starting point
-	*/
 
 		

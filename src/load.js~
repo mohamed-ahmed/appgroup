@@ -5,10 +5,7 @@ function initialize() {
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);	
-		// 	You can enter any points here and it should draw the polyline.
 		
-		
-		//flightPath.setMap(map);
 		}
 		
 	/*
