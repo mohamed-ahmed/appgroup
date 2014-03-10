@@ -77,6 +77,8 @@ function reinitialize() {
 		});
 		
 		flightPath.setMap(map);
+		layIconsNoBuilding(map);
+	layIcons(map);
 		}
 		
 
