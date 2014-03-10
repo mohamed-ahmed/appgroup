@@ -13,36 +13,42 @@
     <script type="text/javascript"
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
     </script>
-    
-    <!--Google Map API -->
-    <!--Load the initial conditions of the map -->
-    <script src="load.js"></script> 
-    <!--Load the adjusted conditions of the map -->
-    <script src="ViewModel/reload.js"></script>
-    
-    <!--DATA-->
+      <!--DATA-->
     <!--Load the UI data from the buildings -->
     <script src="View/GroupedBuildingItems.js"></script>
  	<!-- Load all data east of otrain -->
  	<script src="Model/CarletonNodes.js"></script>
  	
- 	<!-- LOGIC-->
- 	<script src ="ViewModel/ClosestPoint.js"> </script>
- 	
- 	<!--Testing -->
- 	<script src="ViewModel/ERROR_reload/error_pathfinding.js"> </script>
- 	
- 	<!-- Global Variables -->
+ 	 <!--Load the adjusted conditions of the map -->
+    <script src="ViewModel/reload.js"></script>
+    <!--Google Map API -->
+    	<script>
+    function MapFromDropDown(sel) {
+      	DESTINATION = BuildingDataInfo[sel.value];
+    	DESTINATION.building = sel.value;
+    	reinitialize();	
+    }  
+    function MapFromBuildingClick(sel) {
+      	DESTINATION = BuildingDataInfo[sel];
+    	DESTINATION.building = sel;
+    	reinitialize();	
+    }  
+    </script>
     <script>
     	//Global variables go here
     	var DESTINATION;//This is the global destination object
     	var LOCATION;
     </script>
-    
-    <!--This is the main page selector for the buildings -->
+ 	<!-- LOGIC-->
+ 	<script src ="ViewModel/ClosestPoint.js"> </script>
+ 	<!--Load the initial conditions of the map -->
+    <script src="load.js"></script> 
+ 	<!--Testing -->
+ 	<script src="ViewModel/ERROR_reload/error_pathfinding.js"> </script>
+
     <form action="">
 	Select the building you wish to go to:
-	<select id="myList" onchange="AcronymToBuilding(this)">
+	<select id="myList" onchange="MapFromDropDown(this)">
 	<option></option>
 	<!--<option value="SecurityOffice">Security Office</option>
 	<option value="Otrain">O-Train</option>
@@ -104,13 +110,7 @@
 	</select>
 	</form>
 	
-	<script>
-    function AcronymToBuilding(sel) {
-      	DESTINATION = BuildingDataInfo[sel.value];
-    	DESTINATION.building = sel.value;
-    	reinitialize();	
-    }  
-    </script>
+
     <script type="text/javascript">	 
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>

@@ -1,9 +1,9 @@
 function reinitialize() {
 		var mapOptions = {
           center: new google.maps.LatLng( 45.388081, -75.69602),
-          zoom: 15
+          zoom: 17
         };
-        alert ("building = " + DESTINATION.building + "lat " + DESTINATION.lat + " lng " + DESTINATION.lng);
+
         var map = new google.maps.Map(document.getElementById("map-canvas"),
             mapOptions);	
 		// 	You can enter any points here and it should draw the polyline.

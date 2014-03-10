@@ -43,7 +43,7 @@ function CreateGenericInfoWindow (FinalLocation, Width) {
  */
 function buttonClick(id)
 {//Call this function here 
-	AcronymToBuilding(id);
+	MapFromBuildingClick(id);
 }
 
 /*
