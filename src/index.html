@@ -5,7 +5,10 @@
     <style type="text/css">
       html { height: 100% }
       body { height: 100%; margin: 0; padding: 0 }
-      #map-canvas { height: 100% }
+      #map-canvas { 
+	
+			height: 100% ;
+      }
     </style>
     <script type="text/javascript"
        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKN2SV1Sg3rTxson6oxNS0oXx5nv3feU0&sensor=false">
@@ -21,11 +24,13 @@
     <!--Load the UI data from the buildings -->
     <script src="View/GroupedBuildingItems.js"></script>
  	<!-- Load all data east of otrain -->
- 	<script src="Model/DataEastOtrain.js"></script>
- 	<script src="Model/pointsA.js"></script>
+ 	<script src="Model/CarletonNodes.js"></script>
  	
  	<!-- LOGIC-->
  	<script src ="ViewModel/ClosestPoint.js"> </script>
+ 	
+ 	<!--Testing -->
+ 	<script src="ViewModel/ERROR_reload/error_pathfinding.js"> </script>
  	
  	<!-- Global Variables -->
     <script>
@@ -104,8 +109,7 @@
       	DESTINATION = BuildingDataInfo[sel.value];
     	DESTINATION.building = sel.value;
     	reinitialize();	
-    }
-    
+    }  
     </script>
     <script type="text/javascript">	 
       google.maps.event.addDomListener(window, 'load', initialize);

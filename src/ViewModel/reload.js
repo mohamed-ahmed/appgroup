@@ -18,6 +18,7 @@ function reinitialize() {
 		
 		var myLatlng = new google.maps.LatLng(loc.lat,loc.lng);
 		var destLatlng= new google.maps.LatLng(dest.lat,dest.lng);
+		
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			title:"location"
@@ -47,7 +48,8 @@ function reinitialize() {
 				break;
 			}
 			var closest_pt=closest_pt_mark(dest,loc);
-			var markcoord=new google.maps.LatLng(closest_pt.lat,closest_pt.lng);
+			var markcoord = new google.maps.LatLng(closest_pt.lat,closest_pt.lng);
+			
 			//if mark coord is equal to one of the three previous points
 			//is_prev(Array, 3), check previous 3 points, just toss in an integer
 			
@@ -60,6 +62,8 @@ function reinitialize() {
 			//if array gets really big
 			//is_really_big(Array.length)
 			
+			
+			//test dosomething
 			pathArray.push(markcoord);
 			loc=closest_pt;
 		}
